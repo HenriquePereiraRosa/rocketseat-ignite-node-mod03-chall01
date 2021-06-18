@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { User } from '../../../users/entities/User';
+import { User } from '../../../users/entities/user-entity';
 import { Game } from '../../entities/Game';
 
 import { IGamesRepository } from '../IGamesRepository';

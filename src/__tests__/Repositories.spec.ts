@@ -3,7 +3,7 @@ import {
 } from 'typeorm';
 
 import { Game } from '../modules/games/entities/Game';
-import { User } from '../modules/users/entities/User';
+import { User } from '../modules/users/entities/user-entity';
 
 import { UsersRepository } from '../modules/users/repositories/implementations/UsersRepository';
 import { GamesRepository } from '../modules/games/repositories/implementations/GamesRepository';

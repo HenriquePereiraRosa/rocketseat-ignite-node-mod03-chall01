@@ -3,6 +3,28 @@
  * https://jestjs.io/docs/en/configuration.html
  */
 
+// module.exports = {
+//   clearMocks: true,
+//   roots: ['<rootDir>/src'],
+//   coverageProvider: "v8",
+//   collectCoverage: true,
+//   collectCoverageFrom: ['<rootDir>/src/**/*.{ts, tsx}'],
+//   coverageDirectory: 'coverage',
+//   testEnvironment: 'node',
+//   preset: 'ts-jest',
+//   testMatch: [
+//     "<rootDir>/src/__tests__/**/*.spec.js",
+//   ],
+//   coverageThreshold: {
+//     global: {
+//       branches: 80,
+//       functions: 80,
+//       lines: 80,
+//       statements: 80
+//     }
+//   }
+// }
+
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -17,13 +39,13 @@ module.exports = {
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  collectCoverageFrom: ['<rootDir>/src/**/*.{ts, tsx}'],
 
   // The directory where Jest should output its coverage files
-  // coverageDirectory: undefined,
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -41,8 +63,15 @@ module.exports = {
   //   "clover"
   // ],
 
-  // An object that configures minimum threshold enforcement for coverage results
-  // coverageThreshold: undefined,
+  // An object that configures minimum threshold enforcement for coverage results  
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80
+    }
+  },
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
@@ -146,9 +175,9 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: [
-    "<rootDir>/src/__tests__/**/*.spec.ts"
-  ],
+  // testMatch: [
+  //   "<rootDir>/src/__tests__/**/*.spec.ts"
+  // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
@@ -183,7 +212,7 @@ module.exports = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  // verbose: undefined,
+  verbose: true,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],

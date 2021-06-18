@@ -1,0 +1,235 @@
+openapi: 3.0.0
+info:
+  title: Sample Rocket API
+  description: A Api o use when U want to fly.
+  version: 1.0.0
+  contact:
+    email: henrique.prosa@hotmail.com
+servers:
+  - url: http://localhost:3333
+    description: Optional server description, e.g. Internal staging server for testing
+
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+
+paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      tags:
+        - Users
+      description: Only Admin Users can access.
+
+      parameters:
+        - in: headers
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+            example: bd088b12-09c1-4d68-9731-a524b9faae30
+          required: true
+          description: uuid v4 of the Admin User with credentials to get User's list
+
+      responses:
+        '200': # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+        '400':    # status code
+          description: Some parameters is wrong
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+
+    post:
+      summary: Create an User.
+      tags:
+        - Users
+      description: Return an created User by the parameters NAME and EMAIL.
+      consumes:
+        - application/json
+
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+              properties:
+                name:
+                  type: string
+                  example: Bruce Wayne
+                email:
+                  type: string
+                  example: batman@batcave.com
+              # $ref: '#/components/schemas/User'
+
+      responses:
+        '201': # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  admin:
+                    type: boolean
+                    example: false
+                  created_at:
+                    type: string
+                    format: date
+                  update_at:
+                    type: string
+                    format: date
+        '400': # status code
+          description: Some parameters is wrong
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Bad Request"
+
+                  
+  /users/{user_id}:
+    get:
+      summary: The a User related to parameter id.
+      tags:
+        - Users
+      description: Only Admin Users can access.
+
+      parameters:
+        - in: headers
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+            example: bd088b12-09c1-4d68-9731-a524b9faae30
+          required: true
+          description: uuid v4 of the AdminUser with credentials to get User's list
+
+      responses:
+        '200': # status code
+          description: A JSON object of user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  admin:
+                    type: boolean
+                    example: true
+                  created_at:
+                    type: string
+                    format: date
+                  update_at:
+                    type: string
+                    format: date
+        '400':  # status code
+          description: Some parameters is wrong
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Bad Request"
+
+                  
+  /users/{user_id}/admin:
+    patch:
+      summary: Change user to admin.
+      tags:
+        - Users
+      description: Change an User to an Admin User.
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+            example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+          required: true
+          description: uuid v4 ID of the user to get
+      responses:
+        '200': # status code
+          description: A JSON object of Admin User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  admin:
+                    type: boolean
+                    example: true
+                  created_at:
+                    type: string
+                    format: date
+                  update_at:
+                    type: string
+                    format: date
+        '400':    # status code
+          description: Some parameters is wrong
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Bad Request"
+        '404':
+          description: User Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Not Found"
+        '500':
+          description: User Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal Server Error"
