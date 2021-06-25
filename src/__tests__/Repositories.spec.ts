@@ -3,10 +3,10 @@ import {
 } from 'typeorm';
 
 import { Game } from '../modules/games/entities/Game';
-import { User } from '../modules/users/entities/user-entity';
+import { User } from '../modules/users/model/entities/User';
 
-import { UsersRepository } from '../modules/users/repositories/implementations/UsersRepository';
-import { GamesRepository } from '../modules/games/repositories/implementations/GamesRepository';
+import { UserRepository } from '../modules/users/repositories/implementations/UserRepository';
+import { GameRepository } from '../modules/games/repositories/implementations/GameRepository';
 
 const usersSeed: User[] = [
   {
@@ -52,8 +52,8 @@ describe('Repositories', () => {
   let ormUsersRepository: Repository<User>;
   let ormGamesRepository: Repository<Game>;
 
-  let usersRepository: UsersRepository;
-  let gamesRepository: GamesRepository;
+  let usersRepository: UserRepository;
+  let gamesRepository: GameRepository;
 
   beforeAll(async () => {
     connection = await createConnection();
@@ -61,8 +61,8 @@ describe('Repositories', () => {
     ormUsersRepository = getRepository(User);
     ormGamesRepository = getRepository(Game);
 
-    usersRepository = new UsersRepository();
-    gamesRepository = new GamesRepository();
+    usersRepository = new UserRepository();
+    gamesRepository = new GameRepository();
 
     await connection.query('DROP TABLE IF EXISTS users_games_games');
     await connection.query('DROP TABLE IF EXISTS users');

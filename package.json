@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn --poll --interval 3000 src/server.ts",
     "lint:fix": "eslint --fix src --ext ts,tsx",
     "test": "jest",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
@@ -24,11 +24,15 @@
     "yamljs": "^0.3.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "child_process": "^1.0.2",
     "express": "^4.17.1",
     "jshint": "^2.13.0",
-    "pg": "^8.5.1",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.2.31",
+    "tsyringe": "^4.5.0",
+    "typeorm": "^0.2.34",
     "uuid": "^8.3.2"
   }
 }

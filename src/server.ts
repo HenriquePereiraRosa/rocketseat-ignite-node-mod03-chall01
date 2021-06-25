@@ -1,7 +1,7 @@
 import express from 'express';
 
 import path  from 'path';
-import { usersRoutes } from 'routes/users.routes';
+import { router } from './routes';
 import swaggerUi from "swagger-ui-express"
 import YAML from "yamljs"
 
@@ -16,9 +16,7 @@ app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
-app.use("/",  () => "Hello World")
-
-app.use("/users", usersRoutes);
+app.use(router);
 
 app.listen(PORT, () => console.log("Server is running on PORT: " + PORT + "!"));
 

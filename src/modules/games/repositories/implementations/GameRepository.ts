@@ -1,11 +1,11 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { User } from '../../../users/entities/user-entity';
+import { User } from '../../../users/model/entities/User';
 import { Game } from '../../entities/Game';
 
-import { IGamesRepository } from '../IGamesRepository';
+import { IGameRepository } from '../IGameRepository';
 
-export class GamesRepository implements IGamesRepository {
+export class GameRepository implements IGameRepository {
   private repository: Repository<Game>;
 
   constructor() {
@@ -13,9 +13,10 @@ export class GamesRepository implements IGamesRepository {
   }
 
   async findByTitleContaining(param: string): Promise<Game[]> {
-    return this.repository
-      .createQueryBuilder()
-      // Complete usando query builder
+    return this.repository.findOne({
+      where: { title, param }
+    })
+    // Complete usando query builder
   }
 
   async countAllGames(): Promise<[{ count: string }]> {
@@ -25,6 +26,6 @@ export class GamesRepository implements IGamesRepository {
   async findUsersByGameId(id: string): Promise<User[]> {
     return this.repository
       .createQueryBuilder()
-      // Complete usando query builder
+    // Complete usando query builder
   }
 }

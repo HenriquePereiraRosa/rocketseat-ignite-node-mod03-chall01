@@ -1,0 +1,17 @@
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdb        251G   11G  228G   5% /
+tools           1.9T  1.7T  197G  90% /init
+none             13G     0   13G   0% /dev
+tmpfs            13G     0   13G   0% /sys/fs/cgroup
+none             13G  8.0K   13G   1% /run
+none             13G     0   13G   0% /run/lock
+none             13G     0   13G   0% /run/shm
+none             13G     0   13G   0% /run/user
+tmpfs            13G  401M   13G   4% /mnt/wsl
+C:\             1.9T  1.7T  197G  90% /mnt/c
+D:\             932G  682G  251G  74% /mnt/d
+/dev/sdd        251G   11G  229G   5% /mnt/wsl/docker-desktop-data/isocache
+none             13G   12K   13G   1% /mnt/wsl/docker-desktop/shared-sockets/host-services
+/dev/sdc        251G  131M  239G   1% /mnt/wsl/docker-desktop/docker-desktop-proxy
+/dev/loop0      397M  397M     0 100% /mnt/wsl/docker-desktop/cli-tools
+C:\             1.9T  1.7T  197G  90% /mnt/wsl/docker-desktop-bind-mounts/Ubuntu-20.04/1ae005a608cf2bf41c78307d83aa2af401e83ab3f98240bb49e5bb70e37c9910

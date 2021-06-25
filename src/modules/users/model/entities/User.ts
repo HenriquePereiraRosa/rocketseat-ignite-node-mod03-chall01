@@ -7,11 +7,15 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { v4 as uuidV4 } from 'uuid';
 
-import { Game } from '../../games/entities/Game';
+import { Game } from '../../../games/entities/Game';
 
 @Entity('users')
 export class User {
+
+  constructor() { this.id = uuidV4() }
+
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -34,3 +38,4 @@ export class User {
   @UpdateDateColumn()
   updated_at: Date;
 }
+

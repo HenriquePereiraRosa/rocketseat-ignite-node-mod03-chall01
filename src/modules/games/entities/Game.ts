@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { User } from '../../users/entities/user-entity';
+import { User } from '../../users/model/entities/User';
 
 @Entity('games')
 export class Game {
