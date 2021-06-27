@@ -1,5 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
-import uuidV4 from 'uuid';
+import { getRepository, Like, Repository } from 'typeorm';
 
 import { IFindUserWithGamesDTO, IFindUserByFullNameDTO, ICreateUserDTO } from '../../model/dtos/userDTO';
 import { User } from '../../model/entities/User';
@@ -18,37 +17,47 @@ export class UserRepository implements IUserRepository {
     email
   }: ICreateUserDTO): Promise<User> {
     const user = this.repository.create({
-      id: uuidV4(),
       first_name,
       last_name,
       email
     });
-    console.log("REPO");
-    console.log(user);
 
     await this.repository.save(user);
-
     return user;
   }
 
   async findAll(): Promise<User[]> {
-    return await this.repository.find();
+    return this.repository.find();
   }
 
   async findUserWithGamesById({
     user_id,
   }: IFindUserWithGamesDTO): Promise<User> {
-    return this.repository.findOne({ id: user_id });
+    return this.repository.findOne({
+      where: { id: user_id },
+      relations: ["games"],});
   }
 
   async findAllUsersOrderedByFirstName(): Promise<User[]> {
-    return this.repository.query(`select * from users order by users.first_name`); // Complete usando raw query
+    return this.repository
+      .query('select * from users u order by u.first_name');
   }
 
   async findUserByFullName({
     first_name,
     last_name,
   }: IFindUserByFullNameDTO): Promise<User[] | undefined> {
-    return this.repository.query(""); // Complete usando raw query
+    first_name = '%' + first_name + '%';
+    last_name = '%' + last_name + '%';
+    return this.repository.query('select * from users u ' +
+      ' where u.first_name like $1 ' +
+      ' and u.last_name like $2 ',
+      [first_name, last_name]);
+  }
+
+  async findByEmail(email: string): Promise<User[] | undefined> {
+    return this.repository.find({
+      email: Like(`%${email}%`)
+    });
   }
 }

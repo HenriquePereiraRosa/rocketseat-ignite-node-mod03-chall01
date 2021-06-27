@@ -1,5 +1,7 @@
 import { inject, injectable } from "tsyringe";
-import { User } from "../../model/entities/User";
+import { Msg } from "../../../../errors/ErrorMessages";
+import { AppError } from "../../../../errors/AppError";
+import { UserDTO } from "../../model/dtos/userDTO";
 import { IUserRepository } from "../../repositories/IUserRepository";
 
 @injectable()
@@ -8,10 +10,21 @@ class CreateUserUseCase {
     @inject("UserRepository")
     private usersRepository: IUserRepository) { }
 
-  execute({ first_name, last_name, email }): Promise<User> {
-    console.log("use cases: " + first_name + ": " + last_name)
-    return this.usersRepository.create(
+  async execute({ first_name, last_name, email }): Promise<UserDTO> {
+    const userAlreadyexists =  await this.usersRepository.findByEmail(email);
+
+    if(userAlreadyexists.length > 1) {
+      throw new AppError(Msg.MultipleResources);
+    }
+    
+    if(userAlreadyexists.length === 1) {
+      throw new AppError(Msg.AlreadyExists);
+    }
+
+    const userDb = await this.usersRepository.create(
       { first_name, last_name, email });
+
+      return new UserDTO(userDb.first_name, userDb.last_name, userDb.email);
   }
 }
 

@@ -1,4 +1,3 @@
-import 'reflect-metadata'
 import { Router } from "express";
 import { usersRoutes } from "./userRoutes";
 import { infoRoutes } from './infoRoutes';

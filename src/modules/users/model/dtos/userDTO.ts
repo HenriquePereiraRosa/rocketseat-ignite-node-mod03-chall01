@@ -13,4 +13,12 @@ interface IFindUserByFullNameDTO {
   last_name: string;
 }
 
-export { ICreateUserDTO, IFindUserWithGamesDTO, IFindUserByFullNameDTO };
+class UserDTO {
+  constructor(
+    public first_name: string,
+    public last_name: string,
+    public email: string
+  ) { }
+}
+
+export { ICreateUserDTO, IFindUserWithGamesDTO, IFindUserByFullNameDTO, UserDTO };

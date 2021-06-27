@@ -8,7 +8,7 @@ class FindAllUsersOrderedByFirstNameUseCase {
     @inject("UserRepository")
     private usersRepository: IUserRepository) { }
 
-  execute(): Promise<User[]> {
+  async execute(): Promise<User[]> {
     return this.usersRepository.findAllUsersOrderedByFirstName();
   }
 }

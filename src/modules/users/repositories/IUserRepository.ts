@@ -6,4 +6,5 @@ export interface IUserRepository {
   findUserWithGamesById(data: IFindUserWithGamesDTO): Promise<User>;
   findAllUsersOrderedByFirstName(): Promise<User[]>;
   findUserByFullName(data: IFindUserByFullNameDTO): Promise<User[] | undefined>;
+  findByEmail(email: string): Promise<User[] | undefined>;
 }
