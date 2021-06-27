@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
-import path  from 'path';
+import path from 'path';
 
 import swaggerUi from "swagger-ui-express"
 import YAML from "yamljs"
@@ -12,7 +12,7 @@ import createConnection from "./config/database";
 import { AppError } from "./errors/AppError";
 
 
-const swagger_path =  path.resolve(__dirname,'./swagger.yml');
+const swagger_path = path.resolve(__dirname, './swagger.yml');
 const swaggerFile = YAML.load(swagger_path)
 
 const PORT = 3333
@@ -29,12 +29,16 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     if (err instanceof AppError) {
         return response
             .status(err.statusCode)
-            .json({ message: err.message });
+            .json({
+                message: err.message,
+                parameters: err.params,
+                details: err.details
+            });
     }
     console.error(err); // Change to file Log
     return response.status(500).json({
         status: "Internal Server Error",
-        message: (err.message) ? `${err.message}` : `No detailed Message`
+        message: (err.message) ? `${err.message}` : `No detailed Message`,
     });
 
 })

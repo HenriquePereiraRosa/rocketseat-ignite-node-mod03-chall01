@@ -10,7 +10,7 @@ class FindByIdWithGamesController {
   async handle(request: Request, response: Response): Promise<Response> {
       const { user_id }: IFindUserWithGamesDTO = request.query;
       if(!user_id) {
-        throw new AppError(Msg.NotFound)
+        throw new AppError(Msg.ParamCannotBeNull, ['user_id']);
       }
 
       const useCase = container.resolve(FindByIdWithGamesUseCase);
