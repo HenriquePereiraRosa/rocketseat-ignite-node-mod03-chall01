@@ -6,9 +6,9 @@ import path from 'path';
 import swaggerUi from "swagger-ui-express"
 import YAML from "yamljs"
 
-import "./config/database/tsyringe/container";
+import "./database/tsyringe/container";
 import { router } from './routes';
-import { connectionInit } from "./config/database";
+import { connectionInit } from "./database";
 import { AppError } from "./errors/AppError";
 
 

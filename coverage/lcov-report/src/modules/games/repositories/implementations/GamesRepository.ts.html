@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.65% </span>
+                <span class="strong">76.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/46</span>
+                <span class='fraction'>35/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.65% </span>
+                <span class="strong">76.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/46</span>
+                <span class='fraction'>35/46</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -114,8 +114,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -132,22 +132,22 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getRepository, ILike, Repository } from 'typeorm';
 &nbsp;
@@ -159,9 +159,9 @@ import { IGamesRepository } from '../IGamesRepository';
 export class GamesRepository implements IGamesRepository {
   private repository: Repository&lt;Game&gt;;
 &nbsp;
-<span class="fstat-no" title="function not covered" >  constructor() {</span>
-<span class="cstat-no" title="statement not covered" >    this.repository = getRepository(Game);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  constructor() {
+    this.repository = getRepository(Game);
+  }
 <span class="fstat-no" title="function not covered" >  async create(title: string): Promise&lt;Game&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const game = this.repository.create({</span>
 <span class="cstat-no" title="statement not covered" >      title</span>
@@ -177,23 +177,23 @@ export class GamesRepository implements IGamesRepository {
 <span class="cstat-no" title="statement not covered" >    });</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async findByTitleContaining(param: string): Promise&lt;Game[]&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return this.repository.find({</span>
-<span class="cstat-no" title="statement not covered" >      title: ILike(`%${param}%`)</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async findByTitleContaining(param: string): Promise&lt;Game[]&gt; {
+    return this.repository.find({
+      title: ILike(`%${param}%`)
+    });
+  }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async countAllGames(): Promise&lt;[{ count: string }]&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return this.repository</span>
-<span class="cstat-no" title="statement not covered" >      .query('select count(g.id) from games g');</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async countAllGames(): Promise&lt;[{ count: string }]&gt; {
+    return this.repository
+      .query('select count(g.id) from games g');
+  }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  async findUsersByGameId(id: string): Promise&lt;User[]&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return await this.repository.createQueryBuilder()</span>
-<span class="cstat-no" title="statement not covered" >      .relation(Game, "users")</span>
-<span class="cstat-no" title="statement not covered" >      .of(id)</span>
-<span class="cstat-no" title="statement not covered" >      .loadMany();</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async findUsersByGameId(id: string): Promise&lt;User[]&gt; {
+    return await this.repository.createQueryBuilder()
+      .relation(Game, "users")
+      .of(id)
+      .loadMany();
+  }
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -202,7 +202,7 @@ export class GamesRepository implements IGamesRepository {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Jun 28 2021 23:15:21 GMT-0300 (Brasilia Standard Time)
+                at Tue Jun 29 2021 19:16:26 GMT-0300 (Brasilia Standard Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>

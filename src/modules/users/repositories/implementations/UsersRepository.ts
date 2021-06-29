@@ -14,12 +14,14 @@ export class UsersRepository implements IUsersRepository {
   async create({
     first_name,
     last_name,
-    email
+    email,
+    games
   }: ICreateUserDTO): Promise<User> {
     const user = this.repository.create({
       first_name,
       last_name,
-      email
+      email,
+      games
     });
 
     await this.repository.save(user);
@@ -41,7 +43,7 @@ export class UsersRepository implements IUsersRepository {
 
   async findAllUsersOrderedByFirstName(): Promise<User[]> {
     return this.repository
-      .query('select * from users u order by u.first_name');
+      .query('select * from users u order by first_name');
   }
 
   async findUserByFullName({
@@ -51,8 +53,8 @@ export class UsersRepository implements IUsersRepository {
     first_name = '%' + first_name + '%';
     last_name = '%' + last_name + '%';
     return this.repository.query('select * from users u ' +
-      ' where u.first_name like $1 ' +
-      ' and u.last_name like $2 ',
+      ' where LOWER(u.first_name) like LOWER($1) ' +
+      ' and LOWER(u.last_name) like LOWER($2) ',
       [first_name, last_name]);
   }
 

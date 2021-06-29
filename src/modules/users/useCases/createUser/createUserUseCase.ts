@@ -10,7 +10,7 @@ class CreateUserUseCase {
     @inject("UsersRepository")
     private usersRepository: IUserRepository) { }
 
-  async execute({ first_name, last_name, email }): Promise<UserDTO> {
+  async execute({ first_name, last_name, email, games }): Promise<UserDTO> {
     const userAlreadyexists =  await this.usersRepository.findByEmail(email);
 
     if(userAlreadyexists.length > 1) {
@@ -22,7 +22,7 @@ class CreateUserUseCase {
     }
 
     const userDb = await this.usersRepository.create(
-      { first_name, last_name, email });
+      { first_name, last_name, email, games });
 
       return new UserDTO(userDb.first_name, userDb.last_name, userDb.email);
   }

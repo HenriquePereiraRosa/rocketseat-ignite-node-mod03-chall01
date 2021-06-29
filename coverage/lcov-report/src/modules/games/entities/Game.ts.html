@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/28</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
+                <span class='fraction'>4/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/28</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,22 +97,22 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
   Column,
   CreateDateColumn,
@@ -125,22 +125,22 @@
 import { User } from '../../users/model/entities/User';
 &nbsp;
 @Entity('games')
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export class Game {</span></span>
-<span class="cstat-no" title="statement not covered" >  @PrimaryGeneratedColumn('uuid')</span>
-<span class="cstat-no" title="statement not covered" >  id: string;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  @Column()</span>
-<span class="cstat-no" title="statement not covered" >  title: string;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  @ManyToMany(() =&gt; User, (user) =&gt; user.games)</span>
-<span class="cstat-no" title="statement not covered" >  users: User[];</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  @CreateDateColumn()</span>
-<span class="cstat-no" title="statement not covered" >  created_at: Date;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  @UpdateDateColumn()</span>
-<span class="cstat-no" title="statement not covered" >  updated_at: Date;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+export class Game {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+&nbsp;
+  @Column()
+  title: string;
+&nbsp;
+  @ManyToMany(() =&gt; User, (user) =&gt; user.games)
+  users: User[];
+&nbsp;
+  @CreateDateColumn()
+  created_at: Date;
+&nbsp;
+  @UpdateDateColumn()
+  updated_at: Date;
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -148,7 +148,7 @@ import { User } from '../../users/model/entities/User';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Jun 28 2021 23:15:21 GMT-0300 (Brasilia Standard Time)
+                at Tue Jun 29 2021 19:16:26 GMT-0300 (Brasilia Standard Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

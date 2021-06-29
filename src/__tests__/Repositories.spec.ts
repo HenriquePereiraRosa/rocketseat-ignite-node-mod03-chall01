@@ -2,8 +2,6 @@ import {
   Connection, createConnection, getRepository, Repository,
 } from 'typeorm';
 
-import { connectionInit } from '../config/database';
-
 import { Game } from '../modules/games/entities/Game';
 import { User } from '../modules/users/model/entities/User';
 
@@ -58,10 +56,7 @@ describe('Repositories', () => {
   let gamesRepository: GamesRepository;
 
   beforeAll(async () => {
-    // connection = await createConnection();
-    console.log(await connectionInit())
-
-    connection = await connectionInit();
+    connection = await createConnection();
 
     ormUsersRepository = getRepository(User);
     ormGamesRepository = getRepository(Game);

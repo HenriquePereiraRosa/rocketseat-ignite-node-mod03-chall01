@@ -1,7 +1,10 @@
+import { Game } from "../../../games/entities/Game";
+
 interface ICreateUserDTO {
   first_name: string;
   last_name: string;
-  email: string
+  email: string;
+  games: Game[];
 }
 
 interface IFindUserWithGamesDTO {
