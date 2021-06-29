@@ -25,6 +25,13 @@
 //   }
 // }
 
+
+  
+/*
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/en/configuration.html
+ */
+
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -39,13 +46,13 @@ module.exports = {
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
+  // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['<rootDir>/src/**/*.{ts, tsx}'],
+  // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: 'coverage',
+  // coverageDirectory: undefined,
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -63,15 +70,8 @@ module.exports = {
   //   "clover"
   // ],
 
-  // An object that configures minimum threshold enforcement for coverage results  
-  coverageThreshold: {
-    global: {
-      branches: 10,
-      functions: 10,
-      lines: 10,
-      statements: 10
-    }
-  },
+  // An object that configures minimum threshold enforcement for coverage results
+  // coverageThreshold: undefined,
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
@@ -175,9 +175,9 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "<rootDir>/src/__tests__/**/*.spec.ts"
-  // ],
+  testMatch: [
+    "<rootDir>/src/__tests__/**/*.spec.ts"
+  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
@@ -212,11 +212,11 @@ module.exports = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  verbose: true,
+  // verbose: undefined,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+}
