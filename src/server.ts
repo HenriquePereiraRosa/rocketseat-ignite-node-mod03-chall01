@@ -8,7 +8,7 @@ import YAML from "yamljs"
 
 import "./config/database/tsyringe/container";
 import { router } from './routes';
-import createConnection from "./config/database";
+import { connectionInit } from "./config/database";
 import { AppError } from "./errors/AppError";
 
 
@@ -16,7 +16,7 @@ const swagger_path = path.resolve(__dirname, './swagger.yml');
 const swaggerFile = YAML.load(swagger_path)
 
 const PORT = 3333
-createConnection(); // Create DB Connection
+connectionInit(); // Create DB Connection
 const app = express();
 
 app.use(express.json());
@@ -35,7 +35,7 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
                 details: err.details
             });
     }
-    console.error(err); // Change to file Log
+    console.error(err); // todo: Change to file Log
     return response.status(500).json({
         status: "Internal Server Error",
         message: (err.message) ? `${err.message}` : `No detailed Message`,

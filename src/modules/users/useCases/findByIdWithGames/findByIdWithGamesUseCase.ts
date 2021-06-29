@@ -1,12 +1,12 @@
 import { inject, injectable } from "tsyringe";
 import { User } from "../../model/entities/User";
 import { IFindUserWithGamesDTO } from "../../model/dtos/userDTO";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "../../repositories/IUsersRepository";
 
 @injectable()
 class FindByIdWithGamesUseCase {
   constructor(
-    @inject("UserRepository")
+    @inject("UsersRepository")
     private usersRepository: IUserRepository) { }
 
   async execute({ user_id }: IFindUserWithGamesDTO): Promise<User> {

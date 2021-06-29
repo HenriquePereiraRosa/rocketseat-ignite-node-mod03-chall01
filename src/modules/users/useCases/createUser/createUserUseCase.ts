@@ -2,12 +2,12 @@ import { inject, injectable } from "tsyringe";
 import { Msg } from "../../../../errors/ErrorMessages";
 import { AppError } from "../../../../errors/AppError";
 import { UserDTO } from "../../model/dtos/userDTO";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "../../repositories/IUsersRepository";
 
 @injectable()
 class CreateUserUseCase {
   constructor(
-    @inject("UserRepository")
+    @inject("UsersRepository")
     private usersRepository: IUserRepository) { }
 
   async execute({ first_name, last_name, email }): Promise<UserDTO> {

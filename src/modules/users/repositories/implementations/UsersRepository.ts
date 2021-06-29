@@ -1,10 +1,10 @@
-import { getRepository, Like, Repository } from 'typeorm';
+import { getRepository, ILike, Repository } from 'typeorm';
 
 import { IFindUserWithGamesDTO, IFindUserByFullNameDTO, ICreateUserDTO } from '../../model/dtos/userDTO';
 import { User } from '../../model/entities/User';
-import { IUserRepository } from '../IUserRepository';
+import { IUsersRepository } from '../IUsersRepository';
 
-export class UserRepository implements IUserRepository {
+export class UsersRepository implements IUsersRepository {
   private repository: Repository<User>;
 
   constructor() {
@@ -35,7 +35,8 @@ export class UserRepository implements IUserRepository {
   }: IFindUserWithGamesDTO): Promise<User> {
     return this.repository.findOne({
       where: { id: user_id },
-      relations: ["games"],});
+      relations: ["games"]
+    });
   }
 
   async findAllUsersOrderedByFirstName(): Promise<User[]> {
@@ -57,7 +58,7 @@ export class UserRepository implements IUserRepository {
 
   async findByEmail(email: string): Promise<User[] | undefined> {
     return this.repository.find({
-      email: Like(`%${email}%`)
+      email: ILike(`%${email}%`)
     });
   }
 }

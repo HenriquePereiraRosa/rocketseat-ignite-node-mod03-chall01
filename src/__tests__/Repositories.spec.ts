@@ -2,11 +2,13 @@ import {
   Connection, createConnection, getRepository, Repository,
 } from 'typeorm';
 
+import { connectionInit } from '../config/database';
+
 import { Game } from '../modules/games/entities/Game';
 import { User } from '../modules/users/model/entities/User';
 
-import { UserRepository } from '../modules/users/repositories/implementations/UserRepository';
-import { GameRepository } from '../modules/games/repositories/implementations/GameRepository';
+import { UsersRepository } from '../modules/users/repositories/implementations/UsersRepository';
+import { GamesRepository } from '../modules/games/repositories/implementations/GamesRepository';
 
 const usersSeed: User[] = [
   {
@@ -52,17 +54,20 @@ describe('Repositories', () => {
   let ormUsersRepository: Repository<User>;
   let ormGamesRepository: Repository<Game>;
 
-  let usersRepository: UserRepository;
-  let gamesRepository: GameRepository;
+  let usersRepository: UsersRepository;
+  let gamesRepository: GamesRepository;
 
   beforeAll(async () => {
-    connection = await createConnection();
+    // connection = await createConnection();
+    console.log(await connectionInit())
+
+    connection = await connectionInit();
 
     ormUsersRepository = getRepository(User);
     ormGamesRepository = getRepository(Game);
 
-    usersRepository = new UserRepository();
-    gamesRepository = new GameRepository();
+    usersRepository = new UsersRepository();
+    gamesRepository = new GamesRepository();
 
     await connection.query('DROP TABLE IF EXISTS users_games_games');
     await connection.query('DROP TABLE IF EXISTS users');

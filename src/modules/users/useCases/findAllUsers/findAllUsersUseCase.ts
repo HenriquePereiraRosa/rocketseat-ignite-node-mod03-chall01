@@ -1,11 +1,11 @@
 import { inject, injectable } from "tsyringe";
 import { User } from "../../model/entities/User";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "../../repositories/IUsersRepository";
 
 @injectable()
 class FindAllUsersOrderedByFirstNameUseCase {
   constructor(
-    @inject("UserRepository")
+    @inject("UsersRepository")
     private usersRepository: IUserRepository) { }
 
   async execute(): Promise<User[]> {

@@ -6,7 +6,7 @@ import { FindByEmailController } from "../modules/users/useCases/findByEmail/fin
 import { FindByFullnameController } from "../modules/users/useCases/findByFullname/findAllUsersController";
 import { FindByIdWithGamesController } from "../modules/users/useCases/findByIdWithGames/findByIdWithGamesController";
 
-const usersRoutes = Router();
+const userRoutes = Router();
 
 const createUserController = new CreateUserController();
 const findAllUsersOrderedByFirstNameController = new FindAllUsersOrderedByFirstNameController();
@@ -14,10 +14,10 @@ const findByIdWithGamesController = new FindByIdWithGamesController();
 const findByFullnameController = new FindByFullnameController();
 const findByEmailController = new FindByEmailController();
 
-usersRoutes.post("/", createUserController.handle);
-usersRoutes.get("/", findAllUsersOrderedByFirstNameController.handle);
-usersRoutes.get("/by-id/withGames", findByIdWithGamesController.handle);
-usersRoutes.get("/by-fullname", findByFullnameController.handle);
-usersRoutes.get("/by-email", findByEmailController.handle);
+userRoutes.post("/", createUserController.handle);
+userRoutes.get("/", findAllUsersOrderedByFirstNameController.handle);
+userRoutes.get("/by-id/withGames", findByIdWithGamesController.handle);
+userRoutes.get("/by-fullname", findByFullnameController.handle);
+userRoutes.get("/by-email", findByEmailController.handle);
 
-export { usersRoutes };
+export { userRoutes };

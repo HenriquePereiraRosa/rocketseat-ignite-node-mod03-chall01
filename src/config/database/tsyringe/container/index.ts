@@ -1,15 +1,14 @@
 
 import { container } from "tsyringe";
-import { IGameRepository } from "../../../../modules/games/repositories/IGameRepository";
-import { GameRepository } from "../../../../modules/games/repositories/implementations/GameRepository";
-import { UserRepository } from "../../../../modules/users/repositories/implementations/UserRepository";
-import { IUserRepository } from "../../../../modules/users/repositories/IUserRepository";
+import { IGamesRepository } from "../../../../modules/games/repositories/IGamesRepository";
+import { GamesRepository } from "../../../../modules/games/repositories/implementations/GamesRepository";
+import { UsersRepository } from "../../../../modules/users/repositories/implementations/UsersRepository";
+import { IUsersRepository } from "../../../../modules/users/repositories/IUsersRepository";
 
-
-container.registerSingleton<IUserRepository>(
-    "UserRepository", UserRepository
+container.registerSingleton<IUsersRepository>(
+    "UsersRepository", UsersRepository
 );
 
-container.registerSingleton<IGameRepository>(
-    "GamesRepository", GameRepository
+container.registerSingleton<IGamesRepository>(
+    "GamesRepository", GamesRepository
 );

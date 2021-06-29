@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/23</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/23</span>
             </div>
         
             
@@ -73,7 +73,19 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -93,26 +105,32 @@
 <span class="cstat-no" title="statement not covered" >import { Router } from "express";</span>
 <span class="cstat-no" title="statement not covered" >import { CreateUserController } from "../modules/users/useCases/createUser/createUserController";</span>
 <span class="cstat-no" title="statement not covered" >import { FindAllUsersOrderedByFirstNameController } from "../modules/users/useCases/findAllUsers/findAllUsersController";</span>
+<span class="cstat-no" title="statement not covered" >import { FindByEmailController } from "../modules/users/useCases/findByEmail/findByEmailController";</span>
 <span class="cstat-no" title="statement not covered" >import { FindByFullnameController } from "../modules/users/useCases/findByFullname/findAllUsersController";</span>
+<span class="cstat-no" title="statement not covered" >import { FindByIdWithGamesController } from "../modules/users/useCases/findByIdWithGames/findByIdWithGamesController";</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const usersRoutes = Router();</span>
+<span class="cstat-no" title="statement not covered" >const userRoutes = Router();</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const createUserController = new CreateUserController();</span>
 <span class="cstat-no" title="statement not covered" >const findAllUsersOrderedByFirstNameController = new FindAllUsersOrderedByFirstNameController();</span>
+<span class="cstat-no" title="statement not covered" >const findByIdWithGamesController = new FindByIdWithGamesController();</span>
 <span class="cstat-no" title="statement not covered" >const findByFullnameController = new FindByFullnameController();</span>
+<span class="cstat-no" title="statement not covered" >const findByEmailController = new FindByEmailController();</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >usersRoutes.post("/", createUserController.handle);</span>
-<span class="cstat-no" title="statement not covered" >usersRoutes.get("/", findAllUsersOrderedByFirstNameController.handle);</span>
-<span class="cstat-no" title="statement not covered" >usersRoutes.get("/by-fullname", findByFullnameController.handle);</span>
+<span class="cstat-no" title="statement not covered" >userRoutes.post("/", createUserController.handle);</span>
+<span class="cstat-no" title="statement not covered" >userRoutes.get("/", findAllUsersOrderedByFirstNameController.handle);</span>
+<span class="cstat-no" title="statement not covered" >userRoutes.get("/by-id/withGames", findByIdWithGamesController.handle);</span>
+<span class="cstat-no" title="statement not covered" >userRoutes.get("/by-fullname", findByFullnameController.handle);</span>
+<span class="cstat-no" title="statement not covered" >userRoutes.get("/by-email", findByEmailController.handle);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export { usersRoutes };</span></pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >export { userRoutes };</span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Jun 27 2021 10:01:07 GMT-0300 (Brasilia Standard Time)
+                at Mon Jun 28 2021 23:15:21 GMT-0300 (Brasilia Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
